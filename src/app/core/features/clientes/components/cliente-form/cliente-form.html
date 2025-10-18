@@ -1,0 +1,90 @@
+<h2 mat-dialog-title class="titulo"> {{ titulo() }} </h2>
+
+<form [formGroup]="form" (ngSubmit)="guardar()">
+<mat-form-field appearance="fill" class="full-width">
+
+  <mat-label>Nombre</mat-label>
+  <input matInput formControlName="nombre" required>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Técnica</mat-label>
+  <mat-select formControlName="tecnica" required>
+    <mat-option value="nanoring">Nanoring</mat-option>
+    <mat-option value="microring">Microring</mat-option>
+    <mat-option value="cosida">Cosida</mat-option>
+    <mat-option value="pega directa">Pega directa</mat-option>
+
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Tipo</mat-label>
+  <mat-select formControlName="tipo">
+    <mat-option value="punto">Puntos</mat-option>
+    <mat-option value="gramos">Gramos</mat-option>
+    <mat-option value="cortina">Cortina</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Cantidad</mat-label>
+  <input matInput formControlName="cantidad" required>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Precio unitario</mat-label>
+  <mat-select formControlName="precioUnitario">
+<mat-option *ngFor="let precio of preciosDisponibles()" [value]="precio">
+  {{ precio }}
+</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Precio Total</mat-label>
+  <input matInput formControlName="precioTotal"  required>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Direccion</mat-label>
+  <input matInput formControlName="direccion" required>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Celular</mat-label>
+  <input matInput formControlName="cel" required>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Descripción</mat-label>
+  <input matInput formControlName="descripcion" required>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Fecha</mat-label>
+  <input matInput [matDatepicker]="picker" formControlName="fecha" required>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Imagen</mat-label>
+  <input matInput formControlName="image" >
+</mat-form-field>
+
+<div mat-dialog-actions align="end" style="margin-top: 1rem; text-align: right;">
+  <button mat-icon-button type="warn" (click)="cancelar()"><mat-icon>cancel</mat-icon></button>
+  <button mat-icon-button color="primary" type="submit" [disabled]="!form.valid" (click)="guardar()"> <mat-icon>save</mat-icon></button>
+
+</div>
+
+
+</form>

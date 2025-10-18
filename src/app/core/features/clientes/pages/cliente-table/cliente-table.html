@@ -1,0 +1,96 @@
+<div class="container">
+
+  <h1> Clientes Debora SanabriaHair</h1>
+  @if(isLoading){
+    <div class="spinner-container">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      <p>Cargando clientes...</p>
+    </div>
+  } @else {
+    <div style="text-align: center; margin-top: 1rem;">
+<button mat-stroked-button color="primary" (click)="crearCliente()">
+  <mat-icon>add</mat-icon>
+  Nuevo cliente
+</button>
+    </div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.nombre}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="tecnica">
+    <th mat-header-cell *matHeaderCellDef> Técnica </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.tecnica}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="tipo">
+    <th mat-header-cell *matHeaderCellDef> Tipo </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.tipo}} </td>
+  </ng-container>
+  <ng-container matColumnDef="cantidad">
+    <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.cantidad}} </td>
+  </ng-container>
+  <ng-container matColumnDef="precioUnitario">
+    <th mat-header-cell *matHeaderCellDef> Precio Unitario </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.precioUnitario}} </td>
+  </ng-container>
+  <ng-container matColumnDef="precioTotal">
+    <th mat-header-cell *matHeaderCellDef> Precio Total </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.precioTotal}} </td>
+  </ng-container>
+  <ng-container matColumnDef="direccion">
+    <th mat-header-cell *matHeaderCellDef> Dirección </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.direccion}} </td>
+  </ng-container>
+  <ng-container matColumnDef="cel">
+    <th mat-header-cell *matHeaderCellDef> Celular </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.cel}} </td>
+  </ng-container>
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.descripcion}} </td>
+  </ng-container>
+  <ng-container matColumnDef="fecha">
+    <th mat-header-cell *matHeaderCellDef> Fecha </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.fecha}} </td>
+  </ng-container>
+  <ng-container matColumnDef="imagen">
+    <th mat-header-cell *matHeaderCellDef> Imagen </th>
+    <td mat-cell *matCellDef="let cliente"> {{cliente.image}} </td>
+  </ng-container>
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let cliente">
+      <button mat-icon-button color="primary" class="button-edit" (click)="editarCliente(cliente)"
+          matTooltip="Editar">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" class="button-delete" (click)="eliminarCliente(cliente)"
+          matTooltip="Eliminar">
+          <mat-icon>delete</mat-icon>
+        </button> </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+}
+</div>

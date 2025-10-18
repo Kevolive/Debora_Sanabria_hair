@@ -1,0 +1,104 @@
+<!-- Barra de Navegación (Toolbar) -->
+    <mat-toolbar color="primary" class="shadow-lg sticky top-0 z-50">
+      <button mat-icon-button class="example-icon" aria-label="Menú principal">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="font-serif text-2xl font-bold">{{ appTitle() }}</span>
+      <span class="flex-auto"></span>
+      <button mat-button class="hidden sm:inline-flex mx-2">Inicio</button>
+      <button mat-button class="hidden sm:inline-flex mx-2">Servicios</button>
+      <button mat-button class="hidden sm:inline-flex mx-2">Contacto</button>
+      <button mat-icon-button class="mx-2" aria-label="Perfil de usuario">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Contenedor Principal con fondo degradado y espaciado -->
+    <main class="min-h-screen bg-gray-50 p-4 sm:p-8">
+      <div class="max-w-7xl mx-auto space-y-12">
+
+        <!-- Sección de Bienvenida (Hero) -->
+        <mat-card class="p-6 sm:p-12 text-center bg-white shadow-xl rounded-xl">
+          <div class="flex flex-col items-center">
+            <mat-icon class="text-pink-600 text-6xl mb-4">spa</mat-icon>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2 font-serif">
+              Bienvenida a <span class="text-pink-600">Debora Sanabria Hair</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-6 max-w-2xl">
+              Donde la belleza se encuentra con el arte. Descubre nuestros tratamientos exclusivos para un cabello radiante.
+            </p>
+            <button mat-raised-button color="accent" class="py-3 px-8 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition duration-300">
+              ¡Agenda tu Cita Hoy!
+            </button>
+          </div>
+        </mat-card>
+
+        <!-- Sección de Servicios con Layout Responsivo Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Tarjeta de Servicios -->
+          <mat-card class="col-span-1 p-6 shadow-2xl rounded-xl">
+            <mat-card-header>
+              <mat-card-title class="text-2xl font-bold text-gray-800">Nuestros Servicios Exclusivos</mat-card-title>
+              <mat-card-subtitle class="text-pink-600 mt-1">Transformando tu look con pasión</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="mt-4">
+              <mat-list>
+                @for (service of services(); track $index) {
+                  <mat-list-item class="hover:bg-pink-50 rounded-lg transition duration-150">
+                    <mat-icon matListItemIcon class="text-pink-500">{{ service.icon }}</mat-icon>
+                    <div matListItemTitle class="font-medium text-gray-700">{{ service.name }}</div>
+                    <div matListItemLine class="text-sm text-gray-500">{{ service.description }}</div>
+                  </mat-list-item>
+                  @if (!$last) {
+                    <mat-divider></mat-divider>
+                  }
+                }
+              </mat-list>
+            </mat-card-content>
+          </mat-card>
+
+          <!-- Tarjeta de Contacto/Ubicación -->
+          <mat-card class="col-span-1 md:col-span-1 lg:col-span-2 p-6 shadow-2xl rounded-xl bg-pink-50">
+            <mat-card-header>
+              <mat-card-title class="text-2xl font-bold text-gray-800">Información y Ubicación</mat-card-title>
+              <mat-card-subtitle class="text-pink-600 mt-1">Estamos listas para recibirte</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="mt-4 text-gray-700">
+              <p class="mb-3 flex items-center">
+                <mat-icon class="mr-2 text-pink-500">phone</mat-icon> Teléfono: +57 300 123 4567
+              </p>
+              <p class="mb-3 flex items-center">
+                <mat-icon class="mr-2 text-pink-500">email</mat-icon> Email: info@deborasanabriahair.com
+              </p>
+              <p class="mb-3 flex items-center">
+                <mat-icon class="mr-2 text-pink-500">location_on</mat-icon> Dirección: Calle Ficticia #10-25, Medellín, Colombia
+              </p>
+
+              <div class="mt-6">
+                <h3 class="text-xl font-semibold mb-2">Horarios</h3>
+                <p>Lunes a Sábado: 9:00 AM - 7:00 PM</p>
+                <p>Domingos: Cerrado</p>
+              </div>
+            </mat-card-content>
+            <mat-card-actions class="mt-6">
+                <button mat-flat-button color="primary">Ver en Mapa</button>
+            </mat-card-actions>
+          </mat-card>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Pie de Página (Footer) -->
+    <footer class="bg-gray-800 text-white text-center p-4">
+      <p class="text-sm">&copy; {{ currentYear() }} Debora Sanabria Hair. Todos los derechos reservados.</p>
+      <div class="flex justify-center space-x-4 mt-2">
+        <button mat-icon-button class="text-gray-400 hover:text-white" aria-label="Facebook">
+            <mat-icon>facebook</mat-icon>
+        </button>
+        <button mat-icon-button class="text-gray-400 hover:text-white" aria-label="Instagram">
+            <mat-icon>camera_alt</mat-icon> <!-- Usando camera_alt como placeholder de Instagram -->
+        </button>
+      </div>
+    </footer>
