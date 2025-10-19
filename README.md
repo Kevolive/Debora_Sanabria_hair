@@ -147,4 +147,5 @@ For more information on using the Angular CLI, including detailed command refere
 
 
 
-//Pendinte. La tabla no edita y tampoco elimina. Se crea doble el registro. Revisar el despliegue de render
+//Pendinte. Revisar el Backend ya que noquiere cargar los clientes.
+

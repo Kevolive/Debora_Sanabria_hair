@@ -7,7 +7,7 @@ tipo: 'punto' | 'gramo';
 precioUnitario: number;
 precioTotal?: number;
 direccion: string;
-cel: string;
+celular: string;
 fecha: string;
 tecnica: 'nanoring' | 'microring' | 'cortina cocida' | 'técnica directa';
 image?: string;

@@ -38,7 +38,7 @@ export class ClienteForm {
     precioUnitario: [this.data.precioUnitario || 0, [Validators.required, Validators.min(0)]],
     precioTotal: [{ value: this.data.precioTotal || 0, disabled: true }],
     direccion: [this.data.direccion || '', Validators.required],
-    cel: [this.data.cel || '', [Validators.required, Validators.pattern(/^\d{7,10}$/)]],
+    cel: [this.data.celular || '', [Validators.required, Validators.pattern(/^\d{7,10}$/)]],
     descripcion: [this.data.descripcion || '', Validators.required],
     fecha: [this.data.fecha || '', Validators.required],
     image: [this.data.image || '', Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)$/)],

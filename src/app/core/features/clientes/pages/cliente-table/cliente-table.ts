@@ -22,7 +22,7 @@ import { ClienteForm } from '../../components/cliente-form/cliente-form';
 })
 export class ClienteTable {
 
-  displayedColumns: string[] = ['id', 'nombre', 'tecnica', 'tipo', 'cantidad', 'precioUnitario', 'precioTotal', 'direccion', 'cel', 'descripcion', 'fecha', 'imagen', 'acciones'];
+  displayedColumns: string[] = ['id', 'nombre', 'tecnica', 'tipo', 'cantidad', 'precioUnitario', 'precioTotal', 'direccion', 'celular', 'descripcion', 'fecha', 'image', 'acciones'];
 
 
   private clientesService = inject(ClientesService);
@@ -45,12 +45,7 @@ this.clientesService.getClientes().subscribe({
     }
   });
 
-    // this.clientesService.getClientes().subscribe(clientes => {
-    //   setTimeout(() => {
-    //     this.dataSource.data = clientes as Cliente[];
-    //     this.isLoading = false;
-    //   }, 2000);
-    // });
+
   }
 
   crearCliente() {
@@ -58,12 +53,13 @@ this.clientesService.getClientes().subscribe({
       width: '600px',
       data: {}
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.clientesService.createCliente(result).subscribe({
           next: (nuevoCliente) => {
             console.log("Cliente creado", nuevoCliente);
-            this.dataSource.data = [...this.dataSource.data, nuevoCliente as Cliente];
+            this.dataSource.data = [...this.dataSource.data, nuevoCliente];
 
           },
           error: (err) => console.error('Error creando cliente', err)
