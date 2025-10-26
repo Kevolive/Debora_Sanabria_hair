@@ -147,5 +147,5 @@ For more information on using the Angular CLI, including detailed command refere
 
 
 
-//Pendinte. Revisar el Backend ya que noquiere cargar los clientes.
+//Ahora elproblema es el post queno quiere hacer.
 
