@@ -21,6 +21,8 @@ export class ClientesService {
   }
 
   createCliente(cliente: Omit<Cliente, 'id'>):Observable<Cliente> {
+    console.log('Enviando al backend: ', cliente);
+
     return this.http.post<Cliente>(this.apiURL, cliente);
   }
 

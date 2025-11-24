@@ -1,1 +1,83 @@
-<p>dashboard works!</p>
+<div class="min-h-screen bg-black text-white font-sans">
+
+  <header class="w-full flex justify-end items-center px-8 py-6 bg-black">
+<a
+    routerLink="/login"
+    class="flex items-center gap-2 text-[#d5a55b] hover:text-[#e2c08d] transition text-lg font-medium"
+  >
+    <span class="material-icons text-3xl">account_circle</span>
+    Ingresar
+  </a>
+
+  </header>
+  <!-- HERO -->
+  <section class="relative flex flex-col items-center justify-center text-center py-24 px-8">
+
+    <!-- Logo -->
+    <img
+      src="assets/marca-personal.jpg"
+      alt="Debora Sanabria Hair Logo"
+      class="w-40 mb-8 opacity-90"
+    />
+
+    <!-- Nombre -->
+    <h1 class="text-5xl font-semibold tracking-widest text-[#d5a55b]">
+      DEBORA SANABRIA
+    </h1>
+
+    <p class="text-lg text-gray-300 max-w-xl mt-6">
+      Extensiones de cabello premium, técnicas profesionales y una experiencia personalizada
+      diseñada para resaltar tu belleza con elegancia y naturalidad.
+    </p>
+
+
+  </section>
+
+  <!-- SERVICES -->
+  <section class="py-24 px-8 bg-[#111]">
+    <h2 class="text-center text-4xl font-bold text-[#d5a55b] mb-16">Servicios</h2>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+
+      <div class="p-10 bg-black rounded-xl shadow-lg text-center border border-[#d5a55b]/30">
+        <h3 class="text-3xl font-semibold text-[#d5a55b] mb-3">Extensiones Premium</h3>
+        <p class="text-gray-300">Aplicación profesional con resultados naturales y elegantes.</p>
+      </div>
+
+      <div class="p-10 bg-black rounded-xl shadow-lg text-center border border-[#d5a55b]/30">
+        <h3 class="text-3xl font-semibold text-[#d5a55b] mb-3">Asesoría Capilar</h3>
+        <p class="text-gray-300">Descubre tu rutina capilar para tu tipo de cabello.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <!-- CTA -->
+  <section id="booking" class="py-24 bg-[#111] text-center">
+    <div class="bg-black py-10 px-8 max-w-md mx-auto rounded-xl shadow-lg border border-[#d5a55b]/30">
+      <h2 class="text-4xl font-bold text-[#d5a55b]">Agenda tu cita</h2>
+    <p class="text-gray-300 mt-3">Resultados profesionales al alcance de un mensaje</p>
+
+    <a
+      href="https://wa.me/+573002820479"
+      target="_blank"
+      class="inline-block mt-8 px-10 py-4 bg-[#d5a55b] hover:bg-[#c79a55]
+             rounded-full text-lg font-semibold transition shadow-xl"
+    >
+      Reservar por WhatsApp
+    </a>
+  </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-black text-center text-gray-500 border-t border-[#d5a55b]/20">
+    © {{ currentYear }} Debora Sanabria Hair · Todos los derechos reservados
+    <br />
+    CREATED BY KEVIN OLIVELLA DEVELOPER
+  </footer>
+
+</div>

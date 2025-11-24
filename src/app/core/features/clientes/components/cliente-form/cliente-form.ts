@@ -10,7 +10,7 @@ import { Cliente } from '../../../../models/cliente.model';
   selector: 'app-cliente-form',
   imports: [CommonModule,
     ReactiveFormsModule,
-    MaterialModule, ],
+    MaterialModule,],
   templateUrl: './cliente-form.html',
   styleUrl: './cliente-form.scss'
 })
@@ -38,40 +38,74 @@ export class ClienteForm {
     precioUnitario: [this.data.precioUnitario || 0, [Validators.required, Validators.min(0)]],
     precioTotal: [{ value: this.data.precioTotal || 0, disabled: true }],
     direccion: [this.data.direccion || '', Validators.required],
-    cel: [this.data.celular || '', [Validators.required, Validators.pattern(/^\d{7,10}$/)]],
+    celular: [this.data.celular || '', [Validators.required, Validators.pattern(/^\d{7,10}$/)]],
     descripcion: [this.data.descripcion || '', Validators.required],
-    fecha: [this.data.fecha || '', Validators.required],
-    image: [this.data.image || '', Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)$/)],
+    fecha: [this.data.fecha || '', [Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)]],
+    imagen: [this.data.imagen || '', Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)$/)],
   })
 
 
-nombre= signal(this.form.get('cantidad')?.value)
-titulo = computed(() => this.form.value.id ? 'Editar Cliente' : 'Nuevo Cliente');
-preciosDisponibles = computed(() => this.precioTecnica[this.tecnicaSeleccionada()] ?? []);
+  nombre = signal(this.form.get('cantidad')?.value)
+  titulo = computed(() => this.form.value.id ? 'Editar Cliente' : 'Nuevo Cliente');
+  preciosDisponibles = computed(() => this.precioTecnica[this.tecnicaSeleccionada()] ?? []);
 
   // ngOnInit(): void {
   //   this.form.get('cantidad')?.valueChanges.subscribe(() => this.calcularTotal());
   //   this.form.get('precioUnitario')?.valueChanges.subscribe(() => this.calcularTotal());
   // }
-constructor() {
-  this.form.get('tecnica')?.valueChanges.subscribe((tecnica) => {
-    this.tecnicaSeleccionada.set(tecnica);
+  constructor() {
+    this.form.get('tecnica')?.valueChanges.subscribe((tecnica) => {
+      this.tecnicaSeleccionada.set(tecnica);
 
-    const precios = this.precioTecnica[tecnica];
-    const precioUnitario = precios ? precios[0] : 0;
-    //Cuando hay cambio de técnica, hay cambio de la sinal
-    this.form.patchValue({ precioUnitario });
-    this.calcularTotal();
-  });
+      const precios = this.precioTecnica[tecnica];
+      const precioUnitario = precios ? precios[0] : 0;
+      //Cuando hay cambio de técnica, hay cambio de la sinal
+      this.form.patchValue({ precioUnitario });
+      this.calcularTotal();
+    });
 
-//Recalcular total cuando cambian el precio unitario o la cantidad
-  this.form.get('cantidad')?.valueChanges.subscribe(() => this.calcularTotal());
-  this.form.get('precioUnitario')?.valueChanges.subscribe(() => this.calcularTotal());
-}
+    //Recalcular total cuando cambian el precio unitario o la cantidad
+    this.form.get('cantidad')?.valueChanges.subscribe(() => this.calcularTotal());
+    this.form.get('precioUnitario')?.valueChanges.subscribe(() => this.calcularTotal());
+  }
 
   guardar() {
     if (this.form.valid) {
-      this.dialogRef.close(this.form.value);
+
+      this.calcularTotal();
+      const rawData = this.form.getRawValue();
+
+      let fechaISO: string;
+      if (rawData.fecha && rawData.fecha.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      const [year, month, day] = rawData.fecha.split('-');
+      const fechaDate = new Date(Number(year), Number(month) - 1, Number(day));
+      fechaISO = fechaDate.toISOString(); // "2025-11-02T05:00:00.000Z"
+    } else {
+      fechaISO = new Date().toISOString();
+    }
+
+
+      const formData = {
+        id: rawData.id,
+        nombre: rawData.nombre,
+        tecnica: rawData.tecnica,
+        tipo: rawData.tipo === 'gramos' ? 'gramo' : rawData.tipo,
+        cantidad: Number(rawData.cantidad),
+        precioUnitario: Number(rawData.precioUnitario),
+        precioTotal: Number(rawData.precioTotal),
+        direccion: rawData.direccion,
+        celular: rawData.celular,
+        descripcion: rawData.descripcion,
+        fecha: fechaISO,
+        imagen: rawData.imagen || null
+      };
+
+      if (rawData.id === null) {
+        delete formData.id;
+      }
+
+      console.log('📤 Payload FINAL para backend:', formData);
+      this.dialogRef.close(formData);
     }
   }
   cancelar() {
@@ -79,9 +113,13 @@ constructor() {
   }
 
   calcularTotal() {
-    const cantidad = this.form.get('cantidad')?.value || 0;
-    const precioUnitario = this.form.get('precioUnitario')?.value || 0;
-    this.form.patchValue({ precioTotal: cantidad * precioUnitario }, { emitEvent: false });
+    const cantidad = Number(this.form.get('cantidad')?.value) || 0
+    const precioUnitario = Number(this.form.get('precioUnitario')?.value) || 0
+    const precioTotal = cantidad * precioUnitario;
+    this.form.patchValue({ precioTotal: precioTotal }, { emitEvent: false });
+
+    console.log('Calculando total: ', { cantidad, precioUnitario, precioTotal });
+
   }
 
 }

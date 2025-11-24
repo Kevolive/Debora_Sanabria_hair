@@ -147,5 +147,7 @@ For more information on using the Angular CLI, including detailed command refere
 
 
 
-//Ahora elproblema es el post queno quiere hacer.
+//Siguiente tarea, implementar las imágenes. quiero que sea un botón llamado ver, y me redirija a otro componente que contenga las imágenes delas clientes
+//Sumar el valor totwl del mes
+//mostrar datos por mes
 

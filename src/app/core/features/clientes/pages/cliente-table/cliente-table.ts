@@ -1,6 +1,6 @@
 
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../../shared/AngularMaterial/material.module';
 import { ClientesService } from '../../../../services/clientes.service';
@@ -29,6 +29,7 @@ export class ClienteTable implements OnInit {
 
   private clientesService = inject(ClientesService);
   private dialog = inject(MatDialog);
+  private cdr = inject(ChangeDetectorRef);
   dataSource = new MatTableDataSource<Cliente>([]);
 
 
@@ -43,10 +44,12 @@ export class ClienteTable implements OnInit {
         console.log('📦 Clientes recibidos:', clientes);
         this.dataSource.data = clientes;
         this.isLoading = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('❌ Error cargando clientes', err);
         this.isLoading = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -62,18 +65,35 @@ export class ClienteTable implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        console.log('Enviando al backend', result);
+
+
         this.clientesService.createCliente(result).subscribe({
           next: (nuevoCliente) => {
             console.log("Cliente creado", nuevoCliente);
             this.dataSource.data = [...this.dataSource.data, nuevoCliente];
 
           },
-          error: (err) => console.error('Error creando cliente', err)
+          error: (err) => {
+            console.error('❌ Error creando cliente', err);
+            console.log('🔍 Error completo del backend:', err.error);
+            console.log('📝 Mensaje específico:', err.error.message); // <-- ESTA LÍNEA ES IMPORTANTE
+            console.log('📊 Status:', err.status);
+          }
         });
       }
     });
   }
+
+
   editarCliente(cliente: Cliente) {
+
+    const clienteParaEditar = { ...cliente };
+
+    if (clienteParaEditar.fecha && typeof clienteParaEditar.fecha === 'string') {
+        // La conversión a 'any' es temporal para evitar errores de tipado con 'Cliente'
+        clienteParaEditar.fecha = new Date(clienteParaEditar.fecha) as any;
+    }
     const dialogRef = this.dialog.open(ClienteForm, {
       width: '600px',
       data: cliente
@@ -81,7 +101,11 @@ export class ClienteTable implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.clientesService.updateCliente(result.id, result).subscribe({
+
+        console.log('Actualizando en el backend', result);
+const payloadFinal = { ...result };
+
+        this.clientesService.updateCliente(payloadFinal.id, payloadFinal).subscribe({
           next: (clienteActualizado) => {
             console.log("Cliente actualizado", clienteActualizado);
             const index = this.dataSource.data.findIndex(c => c.id === clienteActualizado.id);
@@ -90,7 +114,13 @@ export class ClienteTable implements OnInit {
               this.dataSource._updateChangeSubscription(); // Notificar al dataSource del cambio
             }
           },
-          error: (err) => console.error('Error actualizando cliente', err)
+          error: (err) => {
+            console.error('Error actualizando cliente', err);
+            console.log('Payload enviado: ', result);
+            console.log('Error completo: ', err.error);
+
+
+          }
         });
       }
     });
@@ -100,7 +130,9 @@ export class ClienteTable implements OnInit {
     if (confirmacion) {
       this.clientesService.deleteCliente(cliente.id).subscribe({
         next: () => {
-          console.log("Cliente elmiminado");
+          const deleteConfirmation = `Cliente ${cliente.nombre} eliminado exitosamente.`;
+          console.log(deleteConfirmation);
+          alert(deleteConfirmation);
           this.dataSource.data = this.dataSource.data.filter(c => c.id !== cliente.id);
         },
         error: (err) => console.error('Error eliminando cliente', err)

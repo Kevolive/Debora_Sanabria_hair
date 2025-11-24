@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './core/features/home/home';
 
 import { ClienteTable } from './core/features/clientes/pages/cliente-table/cliente-table';
+import { Dashboard } from './core/layouts/dashboard/dashboard';
 
 
 export const routes: Routes = [
@@ -19,9 +20,13 @@ export const routes: Routes = [
     path: 'clientes',
     component: ClienteTable,
   },
+  {
+    path:'dashboard',
+    component: Dashboard
+  },
 
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'home'
   }
 ];

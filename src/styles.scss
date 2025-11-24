@@ -23,3 +23,6 @@ html, body {
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

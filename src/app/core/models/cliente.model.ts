@@ -10,5 +10,5 @@ direccion: string;
 celular: string;
 fecha: string;
 tecnica: 'nanoring' | 'microring' | 'cortina cocida' | 'técnica directa';
-image?: string;
+imagen?: string;
 }
