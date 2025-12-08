@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Cliente } from '../../../../models/cliente.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ClienteForm } from '../../components/cliente-form/cliente-form';
+import { AuthService } from '../../../../services/auth.service';
 
 
 
@@ -34,6 +35,8 @@ export class ClienteTable implements OnInit {
   private dialog = inject(MatDialog);
   private cdr = inject(ChangeDetectorRef);
   dataSource = new MatTableDataSource<Cliente>([]);
+   private authService = inject(AuthService);
+
 
 
   ngOnInit(): void {
@@ -156,4 +159,22 @@ export class ClienteTable implements OnInit {
       });
     }
   }
+
+
+
+logout() {
+  // Mostrar overlay de carga
+  this.isNavigating = true;
+  this.cdr.detectChanges();
+
+  // Ejecutar lógica de logout (limpiar token/session)
+  try {
+    this.authService.logout();
+  } catch (err) {
+    console.warn('Error en authService.logout():', err);
+  }
+
+  // Navegar al login con delay para mostrar el spinner
+  this.navigationService.navigateWithDelay('/login', 1500);
+}
 }

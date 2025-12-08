@@ -1,10 +1,19 @@
 <div class="container">
+
+
+  <div style="display:flex; justify-content:flex-end; margin-top: 1rem;">
+  <button mat-stroked-button color="warn" (click)="logout()">
+    <mat-icon>logout</mat-icon> Cerrar sesión
+  </button>
+</div>
   <!-- Overlay con spinner durante operaciones -->
   @if(isNavigating) {
     <div class="loading-overlay">
       <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
       <p class="mt-4 text-white text-lg">Procesando...</p>
     </div>
+
+
   }
 
   <h1> Clientes Debora Sanabria Hair</h1>
