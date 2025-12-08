@@ -3,7 +3,10 @@ module.exports = {
     "./src/**/*.{html,ts,scss}",
   ],
   theme: {
-    extend: {},
+    extend: {fontFamily: {
+      'great-vibes': ['"Great Vibes", cursive'],
+    },
   },
   plugins: [],
-};
+}
+}

@@ -1,76 +1,128 @@
 <div class="min-h-screen bg-black text-white font-sans">
 
   <header class="w-full flex justify-end items-center px-8 py-6 bg-black">
-<a
-    routerLink="/login"
-    class="flex items-center gap-2 text-[#d5a55b] hover:text-[#e2c08d] transition text-lg font-medium"
-  >
-    <span class="material-icons text-3xl">account_circle</span>
-    Ingresar
-  </a>
+    <a routerLink="/login"
+      class="flex items-center gap-2 text-[#d5a55b] hover:text-[#e2c08d] text-lg font-medium transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40">
+      <span class="material-icons text-3xl">account_circle</span>
+      Ingresar
+    </a>
 
   </header>
   <!-- HERO -->
   <section class="relative flex flex-col items-center justify-center text-center py-24 px-8">
 
     <!-- Logo -->
-    <img
-      src="assets/marca-personal.jpg"
-      alt="Debora Sanabria Hair Logo"
-      class="w-40 mb-8 opacity-90"
-    />
+    <img src="assets/marca-personal.jpg" alt="Debora Sanabria Hair Logo"
+      class="w-40 mb-8 opacity-90 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40" />
 
     <!-- Nombre -->
-    <h1 class="text-5xl font-semibold tracking-widest text-[#d5a55b]">
-      DEBORA SANABRIA
+    <h1
+      class="text-8xl  tracking-widest text-[#d5a55b] font-great-vibes transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40">
+      Debora Sanabria Hair
     </h1>
 
-    <p class="text-lg text-gray-300 max-w-xl mt-6">
-      Extensiones de cabello premium, técnicas profesionales y una experiencia personalizada
-      diseñada para resaltar tu belleza con elegancia y naturalidad.
+    <p
+      class="text-3xl text-gray-300 max-w-xl mt-6 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40">
+      ¡Extensiones de cabello premium, técnicas profesionales!
     </p>
 
 
-  </section>
+
+  </section>  <div class="my-16">
+    <hr class="border-[#d5a55b]/30">
 
   <!-- SERVICES -->
   <section class="py-24 px-8 bg-[#111]">
-    <h2 class="text-center text-4xl font-bold text-[#d5a55b] mb-16">Servicios</h2>
+    <h2
+      class="text-center text-7xl font-bold text-[#d5a55b] mb-16 font-great-vibes transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40">
+      Servicios</h2>
 
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
 
-      <div class="p-10 bg-black rounded-xl shadow-lg text-center border border-[#d5a55b]/30">
+      <div
+        class="p-10 bg-black rounded-xl shadow-lg text-center border border-[#d5a55b]/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40">
         <h3 class="text-3xl font-semibold text-[#d5a55b] mb-3">Extensiones Premium</h3>
-        <p class="text-gray-300">Aplicación profesional con resultados naturales y elegantes.</p>
+        <p class="text-gray-300 text-2xl">Aplicación profesional con resultados naturales y elegantes.</p>
       </div>
 
-      <div class="p-10 bg-black rounded-xl shadow-lg text-center border border-[#d5a55b]/30">
+      <div
+        class="p-10 bg-black rounded-xl shadow-lg text-center border border-[#d5a55b]/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40">
         <h3 class="text-3xl font-semibold text-[#d5a55b] mb-3">Asesoría Capilar</h3>
-        <p class="text-gray-300">Descubre tu rutina capilar para tu tipo de cabello.</p>
+        <p class="text-gray-300 text-2xl">Descubre tu rutina capilar para tu tipo de cabello.</p>
+      </div>
+
+      <div
+        class="p-10 bg-black rounded-xl shadow-lg text-center border border-[#d5a55b]/30 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40">
+        <h3 class="text-3xl font-semibold text-[#d5a55b] mb-3">Cosméticos</h3>
+        <p class="text-gray-300 text-2xl">Productos y accesorios para el cuidado de tus extensiones de cabello.</p>
       </div>
 
     </div>
-  </section>
 
+    <div class="my-16">
+      <hr class="border-[#d5a55b]/30">
+    </div>
+    <!-- GRID DE IMÁGENES ESTILO GALERÍA -->
+    <div class="max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-4 gap-6">
 
+      <!-- IMAGEN GRANDE IZQUIERDA -->
+      <div class="relative ">
+        <img src="assets/extensiones.jpeg"
+          class="w-full h-[450px] object-cover rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40" />
+        <div class="absolute bottom-6 left-6 bg-white text-black px-6 py-2 font-semibold rounded shadow">
+          NANORING
+        </div>
+      </div>
 
+      <!-- IMAGEN GRANDE CENTRO -->
+      <div class="relative ">
+        <img src="assets/WhatsApp Image 2025-12-07 at 1.18.35 PM.jpeg"
+          class="w-full h-[450px] object-cover rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40" />
+        <div class="absolute bottom-6 left-6 bg-white text-black px-6 py-2 font-semibold rounded shadow">
+          MICRORING
+        </div>
+      </div>
 
+      <!-- IMAGEN PEQUEÑA DERECHA ARRIBA -->
+      <div class="relative">
+        <img src="assets/exts2.jpeg"
+          class="w-full h-[450px] object-cover rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40" />
+        <div class="absolute bottom-6 left-6 bg-white text-black px-6 py-2 font-semibold rounded shadow">
+          PUNTO INVISIBLE
+        </div>
+      </div>
 
-  <!-- CTA -->
-  <section id="booking" class="py-24 bg-[#111] text-center">
-    <div class="bg-black py-10 px-8 max-w-md mx-auto rounded-xl shadow-lg border border-[#d5a55b]/30">
+      <!-- IMAGEN PEQUEÑA DERECHA ABAJO -->
+      <div class="relative">
+        <img src="assets/Kertaina.jfif"
+          class="w-full h-[450px] object-cover rounded-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40" />
+        <div class="absolute bottom-6 left-6 bg-white text-black px-6 py-2 font-semibold rounded shadow">
+          INSUMOS
+        </div>
+      </div>
+
+    </div>
+
+    <div class="my-16">
+      <hr class="border-[#d5a55b]/30">
+    </div>
+
+    <!-- CTA -->
+
+    <div class="bg-black py-10 px-8 max-w-md mx-auto rounded-xl shadow-lg border border-[#d5a55b]/30
+            transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40 text-center">
+
       <h2 class="text-4xl font-bold text-[#d5a55b]">Agenda tu cita</h2>
-    <p class="text-gray-300 mt-3">Resultados profesionales al alcance de un mensaje</p>
 
-    <a
-      href="https://wa.me/+573002820479"
-      target="_blank"
-      class="inline-block mt-8 px-10 py-4 bg-[#d5a55b] hover:bg-[#c79a55]
-             rounded-full text-lg font-semibold transition shadow-xl"
-    >
-      Reservar por WhatsApp
-    </a>
-  </div>
+      <p class="text-gray-300 mt-3">Resultados profesionales al alcance de un mensaje</p>
+
+      <a href="https://wa.me/+573002820479" target="_blank" class="mt-8 px-10 py-4 bg-[#d5a55b] hover:bg-[#c79a55] rounded-full text-lg font-semibold
+            transition shadow-xl block mx-auto w-fit">
+        Reservar por WhatsApp
+      </a>
+
+    </div>
+
   </section>
 
   <!-- FOOTER -->
