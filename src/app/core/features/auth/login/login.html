@@ -1,29 +1,82 @@
-<mat-card class="login-card">
-  <h2>Iniciar sesión</h2>
+<div class="flex items-center justify-center min-h-screen bg-gray-500">
+  <!-- Overlay con spinner de carga durante navegación -->
+  @if(isNavigating) {
+    <div class="loading-overlay">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      <p class="mt-4 text-white text-lg">Redirigiendo...</p>
+    </div>
+  }
 
-  <form [formGroup]="form" (ngSubmit)="onLogin()">
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Usuario</mat-label>
-      <input matInput placeholder="Ej: Debora" formControlName="email" />
-      @if (form.get('email')?.hasError('required')) {
-        <mat-error>El usuario es obligatorio</mat-error>
-      }
-    </mat-form-field>
+  <!-- Contenedor principal: Centra todo y define el fondo oscuro -->
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" formControlName="password" />
-      @if (form.get('password')?.hasError('required')) {
-        <mat-error>La contraseña es obligatoria</mat-error>
-      }
-    </mat-form-field>
+  <div class="flex flex-col md:flex-row max-w-4xl w-full bg-white dark:bg-gray-800 shadow-2xl rounded-lg overflow-hidden">
 
-    @if (errorMessage) {
-      <p class="error-text">{{ errorMessage }}</p>
-    }
+    <!-- Sección de Marca (Izquierda): Usa Tailwind para el layout y estilos de texto -->
+    <div class="md:w-1/2 flex flex-col items-center justify-center p-8 bg-gray-900">
 
-    <button mat-raised-button color="primary" type="submit" class="login-btn">
-      Ingresar
-    </button>
-  </form>
-</mat-card>
+  <!-- Contenedor del Logo (Imagen) -->
+  <img
+    src="assets/marca-personal.jpg"
+    alt="Debora Sanabria Hair Logo"
+    class="w-40 mb-4 opacity-90 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40"
+  />
+
+  <!-- Contenedor del Nombre (Texto) -->
+  <h1
+    class="text-4xl text-center tracking-widest text-[#d5a55b] font-great-vibes transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40"
+  >
+    Debora Sanabria Hair
+  </h1>
+
+</div>
+
+
+    <!-- Sección de Formulario (Derecha): Usa Tailwind para el padding y Angular Material para los componentes -->
+    <div class="md:w-1/2 p-10">
+
+      <!-- mat-card proporciona estructura y sombra nativa de Material -->
+      <mat-card class="shadow-none !p-0">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-white text-center">Iniciar sesión</h2>
+
+        <form [formGroup]="form" (ngSubmit)="onLogin()">
+
+          <!-- mat-form-field gestiona input, label y errores de Material -->
+          <mat-form-field appearance="fill" class="full-width mb-4">
+            <mat-label>Usuario o Email</mat-label>
+            <input matInput placeholder="Ej: debora@ejemplo.com" formControlName="email" type="email" autocomplete="username" />
+            @if (form.get('email')?.hasError('required')) {
+              <mat-error>El usuario es obligatorio</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="full-width mb-6">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" autocomplete="current-password" />
+            @if (form.get('password')?.hasError('required')) {
+              <mat-error>La contraseña es obligatoria</mat-error>
+            }
+          </mat-form-field>
+
+          @if (errorMessage) {
+            <!-- Tailwind para el estilo del mensaje de error -->
+            <p class="text-red-500 text-sm mb-4">{{ errorMessage }}</p>
+          }
+
+          <!-- Botón de Material con estilo de color Tailwind para el fondo -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            class="w-full bg-[#d5a55b] hover:bg-[#c29653] text-gray-900 font-bold shadow-lg"
+          >
+            Ingresar
+          </button>
+        </form>
+
+        <div class="mt-4 text-sm text-center">
+            <a href="#" class="text-gray-600 hover:text-[#d5a55b] dark:text-gray-400">¿Olvidó su contraseña?</a>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
