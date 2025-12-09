@@ -57,10 +57,10 @@ export class ClienteForm {
     this.form.get('tecnica')?.valueChanges.subscribe((tecnica) => {
       this.tecnicaSeleccionada.set(tecnica);
 
-      const precios = this.precioTecnica[tecnica];
-      const precioUnitario = precios ? precios[0] : 0;
-      //Cuando hay cambio de técnica, hay cambio de la sinal
-      this.form.patchValue({ precioUnitario });
+      // const precios = this.precioTecnica[tecnica];
+      // const precioUnitario = precios ? precios[0] : 0;
+      // //Cuando hay cambio de técnica, hay cambio de la sinal
+      // this.form.patchValue({ precioUnitario });
       this.calcularTotal();
     });
 

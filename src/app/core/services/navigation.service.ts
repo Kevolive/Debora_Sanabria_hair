@@ -14,7 +14,7 @@ export class NavigationService {
    */
   navigateWithDelay(route: string, delay: number = 2000): void {
     setTimeout(() => {
-      this.router.navigateByUrl(route);
+      this.router.navigate([route], { replaceUrl: true });
     }, delay);
   }
 }

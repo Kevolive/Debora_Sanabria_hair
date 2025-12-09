@@ -36,13 +36,15 @@
 
 
   <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Precio unitario</mat-label>
-    <mat-select formControlName="precioUnitario">
-      <mat-option *ngFor="let precio of preciosDisponibles()" [value]="precio">
-        {{ precio }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <mat-label>Precio unitario</mat-label>
+  <input
+    matInput
+    type="number"
+    formControlName="precioUnitario"
+    placeholder="Ingresar precio manualmente"
+    required>
+</mat-form-field>
+
 
 
   <mat-form-field appearance="fill" class="full-width">
