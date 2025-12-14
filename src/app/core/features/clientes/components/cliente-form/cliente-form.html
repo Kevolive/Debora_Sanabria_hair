@@ -52,6 +52,14 @@
     <input matInput formControlName="precioTotal" required>
   </mat-form-field>
 
+<mat-form-field appearance="fill" class="full-width">
+  <mat-label>Tipo de pago</mat-label>
+  <mat-select formControlName="tipoPago">
+    <mat-option value="efectivo">Efectivo</mat-option>
+    <mat-option value="transferencia">Transferencia</mat-option>
+    <mat-option value="otro">Otro</mat-option>
+  </mat-select>
+</mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width">
     <mat-label>Direccion</mat-label>

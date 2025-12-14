@@ -42,6 +42,7 @@ export class ClienteForm {
     descripcion: [this.data.descripcion || '', Validators.required],
     fecha: [this.data.fecha || '', [Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)]],
     imagen: [this.data.imagen || '', Validators.pattern(/https?:\/\/.+\.(jpg|jpeg|png|gif)$/)],
+    tipoPago: [this.data.tipoPago || null]
   })
 
 

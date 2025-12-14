@@ -11,4 +11,5 @@ celular: string;
 fecha: string;
 tecnica: 'nanoring' | 'microring' | 'cortina cocida' | 'técnica directa';
 imagen?: string;
+tipoPago?: 'efectivo' | 'transferencia' | 'otro';
 }

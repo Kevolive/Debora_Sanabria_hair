@@ -16,7 +16,10 @@
 
   }
 
-  <h1> Clientes Debora Sanabria Hair</h1>
+  <h1
+      class="text-8xl  tracking-widest text-[#d5a55b] ng s -o font-great-vibes transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#d5a55b]/40">
+      Debora Sanabria Hair
+    </h1>
   @if(isLoading){
     <div class="spinner-container">
       <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
@@ -71,6 +74,12 @@
     <th mat-header-cell *matHeaderCellDef> Precio Total </th>
     <td mat-cell *matCellDef="let cliente"> {{cliente.precioTotal}} </td>
   </ng-container>
+
+<ng-container>
+  <th mat-header-cell *matHeaderCellDef> Tipo de pago</th>
+  <td mat-cell *matCellDef="let cliente">{{cliente.tipoPago}}</td>
+</ng-container>
+
   <ng-container matColumnDef="direccion">
     <th mat-header-cell *matHeaderCellDef> Dirección </th>
     <td mat-cell *matCellDef="let cliente"> {{cliente.direccion}} </td>

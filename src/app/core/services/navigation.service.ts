@@ -12,7 +12,7 @@ export class NavigationService {
    * @param route - Ruta de destino
    * @param delay - Tiempo en milisegundos (default: 2000ms)
    */
-  navigateWithDelay(route: string, delay: number = 2000): void {
+  navigateWithDelay(route: string, delay: number = 4000): void {
     setTimeout(() => {
       this.router.navigate([route], { replaceUrl: true });
     }, delay);
