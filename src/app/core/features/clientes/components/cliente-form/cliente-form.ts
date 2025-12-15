@@ -50,18 +50,12 @@ export class ClienteForm {
   titulo = computed(() => this.form.value.id ? 'Editar Cliente' : 'Nuevo Cliente');
   preciosDisponibles = computed(() => this.precioTecnica[this.tecnicaSeleccionada()] ?? []);
 
-  // ngOnInit(): void {
-  //   this.form.get('cantidad')?.valueChanges.subscribe(() => this.calcularTotal());
-  //   this.form.get('precioUnitario')?.valueChanges.subscribe(() => this.calcularTotal());
-  // }
+
   constructor() {
     this.form.get('tecnica')?.valueChanges.subscribe((tecnica) => {
       this.tecnicaSeleccionada.set(tecnica);
 
-      // const precios = this.precioTecnica[tecnica];
-      // const precioUnitario = precios ? precios[0] : 0;
-      // //Cuando hay cambio de técnica, hay cambio de la sinal
-      // this.form.patchValue({ precioUnitario });
+
       this.calcularTotal();
     });
 
@@ -98,7 +92,9 @@ export class ClienteForm {
         celular: rawData.celular,
         descripcion: rawData.descripcion,
         fecha: fechaISO,
-        imagen: rawData.imagen || null
+        imagen: rawData.imagen || null,
+        tipoPago: rawData.tipoPago || null
+
       };
 
       if (rawData.id === null) {
